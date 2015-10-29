@@ -23,7 +23,7 @@ class Instance(models.Model):
 
 class Transaction(models.Model):
 	start = models.DateTimeField()
-	end = models.DateTimeFiled()
+	end = models.DateTimeField()
 	cost = models.DecimalField(max_digits=10, decimal_places=2)
 	guest = models.ForeignKey(User)
 	instance = models.ForeignKey(Instance)
