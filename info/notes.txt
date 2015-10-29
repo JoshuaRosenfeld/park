@@ -6,13 +6,9 @@ GENERAL
 
 DATABASE DESIGN
 ---------------
-- Person
-	- Since names vary across cultures, there is only one field
-	- Name and email lengths are based on UK estimates
-	- Password will be a hash
-- Address
-	- Since address vary accorss locations, it is simply four text fields
-	- Zip is of type CHAR because it can have leading 0
+- Since names vary across cultures, there is only one field
+- Name and email lengths are based on UK estimates
+- Password will be a hash
 
 
 RESOURCES
