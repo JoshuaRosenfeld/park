@@ -1,0 +1,29 @@
+GENERAL
+-------
+- The presence of a vehicle deters burglaries
+	- 66% of burglars would not rob a house with a vehicle in the driveway
+
+
+DATABASE DESIGN
+---------------
+- Person
+	- Since names vary across cultures, there is only one field
+	- Name and email lengths are based on UK estimates
+	- Password will be a hash
+- Address
+	- Since address vary accorss locations, it is simply four text fields
+	- Zip is of type CHAR because it can have leading 0
+
+
+RESOURCES
+---------
+Database Design
+	- http://stackoverflow.com/questions/929684/is-there-common-street-addresses-database-design-for-all-addresses-of-the-world
+	- http://stackoverflow.com/questions/8284647/mysql-how-to-store-phone-numbers
+	- http://www.databaseanswers.org/data_models/index.htm
+	- http://webarchive.nationalarchives.gov.uk/20100407120701/http://cabinetoffice.gov.uk/govtalk/schemasstandards/e-gif/datastandards.aspx
+
+Parking Apps
+	- https://www.mobypark.com/?utm_source=Quora&utm_medium=Blog&utm_campaign=New
+	- http://chrishoog.com/from-beginning-to-end-the-story-of-a-failed-parking-startup/
+	- http://chrishoog.com/the-helloparking-postmortem-a-look-back-and-a-new-perspective/
