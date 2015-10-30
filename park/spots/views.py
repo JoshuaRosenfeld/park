@@ -1,14 +1,13 @@
-from django.http import HttpResponse, Http404
-from django.template import RequestContext, loader
-from django.shortcuts import render
-from .models import User
+from django.template import loader
+from django.shortcuts import render, get_object_or_404
+from .models import User, Spot
 
 def index(request):
-	user_list = User.objects.all()
+	spot_list = Spot.objects.all()
 	template = loader.get_template('spots/index.html')
-	context = {'user_list': user_list}
+	context = {'spot_list': spot_list}
 	return render(request, 'spots/index.html', context)
 
 def spot(request, spot_id):
-	response = "You're looking at spot %s"
-	return HttpResponse(response % spot_id)
+	spot = get_object_or_404(Spot, pk=spot_id)
+	return render(request, 'spots/detail.html', {'spot': spot})

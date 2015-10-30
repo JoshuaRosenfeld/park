@@ -1,9 +1,9 @@
-{% if user_list %}
+{% if spot_list %}
     <ul>
-    {% for user in user_list %}
-        <li><a href="/spots/{{ user.id }}/">{{ user.name }}</a></li>
+    {% for spot in spot_list %}
+        <li><a href="{% url 'spots:spot' spot.id %}">{{ spot.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No users are registered.</p>
+    <p>No spots are available.</p>
 {% endif %}
