@@ -18,8 +18,8 @@ Database Design
 	- http://stackoverflow.com/questions/8284647/mysql-how-to-store-phone-numbers
 	- http://www.databaseanswers.org/data_models/index.htm
 	- http://webarchive.nationalarchives.gov.uk/20100407120701/http://cabinetoffice.gov.uk/govtalk/schemasstandards/e-gif/datastandards.aspx
+	- https://developers.google.com/maps/documentation/javascript/geocoding
 
 Parking Apps
-	- https://www.mobypark.com/?utm_source=Quora&utm_medium=Blog&utm_campaign=New
 	- http://chrishoog.com/from-beginning-to-end-the-story-of-a-failed-parking-startup/
 	- http://chrishoog.com/the-helloparking-postmortem-a-look-back-and-a-new-perspective/
