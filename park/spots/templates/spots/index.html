@@ -1,3 +1,7 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'spots/style.css' %}" />
+
 {% if spot_list %}
     <ul>
     {% for spot in spot_list %}
