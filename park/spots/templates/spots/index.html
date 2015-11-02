@@ -1,7 +1,6 @@
-{% load staticfiles %}
+{% extends "spots/base.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'spots/style.css' %}" />
-
+{% block content %}
 {% if spot_list %}
     <ul>
     {% for spot in spot_list %}
@@ -11,3 +10,4 @@
 {% else %}
     <p>No spots are available.</p>
 {% endif %}
+{% endblock %}

@@ -1,7 +1,111 @@
-body {
-	background: white url("images/smile.png") no-repeat right bottom;
+/***** Base rules *****/
+
+html, body {
+	height: 100%;
+	min-height: 300px;
 }
 
-li a {
-	color: green;
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+	margin: 0;
+}
+
+/***** Layout rules *****/
+
+/* major components */
+
+#content {
+	height: 100%;
+}
+
+#header {
+	height: 60px;
+	background-color: rgb(200, 200, 200);
+}
+
+#footer {
+	height: 60px;
+	background-color: rgb(120, 120, 120);
+}
+
+#logo {
+	height: 100%;
+	display: inline-block;
+	float: left;
+	margin-left: 25px;
+}
+
+#primary-nav {
+	height: 100%;
+	float: right;
+	text-align: center;
+}
+
+/* home page */
+
+#layout-welcome{
+}
+
+/***** Module rules *****/
+
+.container {
+	margin: 0 auto;
+}
+
+.grid {
+	height: 100%;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.grid > li {
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 15px;
+}
+
+.grid a {
+	display: inline-block;
+	height: 100%;
+}
+
+.horizontal-stretch {
+	width: 100%;
+	display: inline-block;
+}
+
+.main {
+	width: 100%;
+	min-width: 980px;
+}
+
+.vertical-center-parent {
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+.vertical-center-child {
+	width: 100%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/* text */
+
+/* items */
+
+/***** State rules *****/
+
+.class.is-active {
 }

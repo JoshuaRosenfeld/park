@@ -1,0 +1,48 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="title" content="Park">
+	<meta name="description" content="Parking made simple.">
+	<meta name="keywords" content="parking, park">
+	<title>Park</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'spots/normalize.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'spots/style.css' %}"/>
+</head>
+<body>
+	<div id="header" class="container main">
+		<div id="logo">
+			<a href="/spots/">
+				<div class="vertical-center-parent">
+					<div class="vertical-center-child">Park</div>
+				</div>
+			</a>
+		</div>
+		<div id="primary-nav">
+			<ul class="grid">
+				<li>
+					<a href="/spots/">
+						<div class="vertical-center-parent">
+							<div class="vertical-center-child">Sign up</div>
+						</div>
+					</a>
+				</li><!-- remove white space
+				--><li>
+					<a href="/spots/">
+						<div class="vertical-center-parent">
+							<div class="vertical-center-child">Log in</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="content" class="container main">
+		{% block content %}{% endblock %}
+	</div>
+	<div id="footer" class="container main"></div>
+</body>
+</html>
+		
