@@ -5,25 +5,23 @@ from django.views.generic import TemplateView
 from .models import User, Spot
 from .forms import SearchForm
 
-class IndexView(TemplateView):
-	template_name = 'spots/index.html'
-
-def search(request):
-	if request.method == 'Post':
-		form = SearchForm(request.POST)
-		if form.is_valid():
-			return HttpResponseRedirect('/results/')
-	else:
-		form = SearchForm()
+def index(request):
+	form = SearchForm()
 	return render(request, 'spots/index.html', {'form': form})
+
+def results(request):
+	address = request.GET['address']
+	date = request.GET['date']
+	time = request.GET['time']
+	return render(request, 'spots/spots.html', {'a': address})
 
 class SpotView(generic.DetailView):
 	model = Spot
 
-class ResultsView(generic.DetailView):
-	template_name = 'spots/spots.html'
-	context_object_name = 'spot_list'
+#class ResultsView(generic.DetailView):
+	# template_name = 'spots/spots.html'
+	# context_object_name = 'spot_list'
 
-	def get_queryset(self):
-		""" Return all spots """
-		return Spot.objects.all()
+	# def get_queryset(self):
+	# 	""" Return all spots """
+	# 	return Spot.objects.all()
