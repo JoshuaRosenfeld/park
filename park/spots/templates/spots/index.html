@@ -1,13 +1,19 @@
 {% extends "spots/base.html" %}
-
 {% block content %}
-{% if spot_list %}
-    <ul>
-    {% for spot in spot_list %}
-        <li><a href="{% url 'spots:spot' spot.id %}">{{ spot.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No spots are available.</p>
-{% endif %}
+<div class="grid_13 push_2">
+	<p class="white" id="slogan">Find spots near you.</p>
+</div>
+<div class="grid_11 push_2" id="layout-home-search">
+	<form id="form-search" action="" method="get">
+		<div class="grid_7 alpha">
+			<input type="text" placeholder="Where are you going">
+		</div>
+		<div class="grid_3">
+			<input type="text" placeholder="Arrival">
+		</div>
+		<div class="grid_1 omega">
+			<div class="btn">Search</div>
+		</div>
+	</form>
+</div>
 {% endblock %}

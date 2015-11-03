@@ -1,18 +1,5 @@
 /***** Base rules *****/
 
-html, body {
-	height: 100%;
-	min-height: 300px;
-}
-
-html {
-	background: url('images/background.jpg') no-repeat center center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-
 a {
 	color: inherit;
 	text-decoration: none;
@@ -30,43 +17,57 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 
 /* major components */
 
-#content {
-	height: 100%;
-}
-
 #header {
 	height: 60px;
+	margin-bottom: 120px;
 	color: white;
 }
 
-#footer {
+#footer-wrapper {
 	height: 60px;
 	background-color: rgb(120, 120, 120);
 }
 
 #logo {
 	height: 100%;
-	display: inline-block;
-	float: left;
-	margin-left: 25px;
 	color: black;
+}
+
+#logo p {
+	font-size: 24px;
 }
 
 #primary-nav {
 	height: 100%;
-	float: right;
 	text-align: center;
+}
+
+#primary-nav > div{
+	height: 100%;
 }
 
 /* home page */
 
-#layout-welcome{
+#layout-home-search{
+	height: 90px;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
+#wrapper {
+	height: 100vh;
+	min-height: 300px;
+	background: url('images/background.jpg') no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 /***** Module rules *****/
 
-.container {
-	margin: 0 auto;
+.btn {
+
 }
 
 .grid {
@@ -80,7 +81,6 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 	height: 100%;
 	display: inline-block;
 	vertical-align: top;
-	padding: 0 15px;
 }
 
 .grid a {
@@ -91,11 +91,6 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 .horizontal-stretch {
 	width: 100%;
 	display: inline-block;
-}
-
-.main {
-	width: 100%;
-	min-width: 980px;
 }
 
 .vertical-center-parent {
@@ -112,7 +107,15 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 
 /* text */
 
+.white {
+	color: white;
+}
+
 /* items */
+
+#slogan {
+	font-size: 40px;
+}
 
 /***** State rules *****/
 

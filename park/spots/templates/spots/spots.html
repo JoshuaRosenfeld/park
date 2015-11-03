@@ -1,0 +1,9 @@
+{% if spot_list %}
+    <ul>
+    {% for spot in spot_list %}
+        <li><a href="{% url 'spots:spot' spot.id %}">{{ spot.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No spots are available.</p>
+{% endif %}
