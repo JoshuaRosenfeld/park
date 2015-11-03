@@ -1,24 +1,30 @@
 {% extends "spots/base.html" %}
 {% block content %}
-<div class="grid_13 push_2">
-	<p class="white" id="slogan">Find spots near you.</p>
+<div id="wrapper">
+	{% include "spots/header.html" %}  
+	<div class="container_15">
+		<div class="grid_13 push_2">
+			<p class="white" id="slogan">Find spots near you.</p>
+		</div>
+		<div class="grid_11 push_2" id="layout-home-search">
+			<form id="form-search" action="/spots/results" method="get">
+				<div class="grid_6 alpha">
+					<input type="text" class="form-control no-rad-right" placeholder="Where are you going?">
+				</div>
+				<div class="grid_2">
+					<input type="text" class="form-control no-rad" placeholder="What day?">
+				</div>
+				<div class="grid_2">
+					<input type="text" class="form-control no-rad" placeholder="What time?">
+				</div>
+				<div class="grid_1 omega">
+					<div class="btn vertical-center-parent no-rad-left" id="btn-search">
+						<div class="vertical-center-child" onclick="document.forms[0].submit()">Search</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
-<div class="grid_11 push_2" id="layout-home-search">
-	<form id="form-search" action="/spots/results" method="get">
-		<div class="grid_6 alpha">
-			<input type="text" class="form-control no-rad-right" placeholder="Where are you going?">
-		</div>
-		<div class="grid_2">
-			<input type="text" class="form-control no-rad" placeholder="What day?">
-		</div>
-		<div class="grid_2">
-			<input type="text" class="form-control no-rad" placeholder="What time?">
-		</div>
-		<div class="grid_1 omega">
-			<div class="btn vertical-center-parent no-rad-left" id="btn-search">
-				<div class="vertical-center-child" onclick="document.forms[0].submit()">Search</div>
-			</div>
-		</div>
-	</form>
-</div>
+{% include "spots/footer.html" %}
 {% endblock %}
