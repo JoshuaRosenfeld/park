@@ -1,5 +1,13 @@
 /***** Base rules *****/
 
+body {
+	font-family: 'Hind', sans-serif;;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+	margin: 0;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
@@ -7,10 +15,6 @@ a {
 
 a:hover {
 	text-decoration: none;
-}
-
-h1, h2, h3, h4, h5, h6, p, ul, ol {
-	margin: 0;
 }
 
 /***** Layout rules *****/
@@ -24,17 +28,20 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 }
 
 #footer-wrapper {
-	height: 60px;
-	background-color: rgb(120, 120, 120);
+	background: url('images/binding_light.png');
+	padding: 15px 0;
+	border-top: 2px solid black;
+}
+
+#footer-wrapper a{
+	text-decoration: underline;
 }
 
 #logo {
 	height: 100%;
 	color: black;
-}
-
-#logo p {
-	font-size: 24px;
+	font-family: 'Poiret One', cursive;
+	font-size: 36px;
 }
 
 #primary-nav {
@@ -48,12 +55,6 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 
 /* home page */
 
-#layout-home-search{
-	height: 90px;
-	border: 1px solid black;
-	border-radius: 3px;
-}
-
 #wrapper {
 	height: 100vh;
 	min-height: 300px;
@@ -65,10 +66,6 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 }
 
 /***** Module rules *****/
-
-.btn {
-
-}
 
 .grid {
 	height: 100%;
@@ -111,7 +108,20 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 	color: white;
 }
 
+.light {
+	font-weight: 300;
+}
+
+.small {
+	font-size: 12px;
+}
+
 /* items */
+
+#btn-search {
+	background-color: rgb(172, 156, 87);
+	color: white;
+}
 
 #slogan {
 	font-size: 40px;
@@ -120,4 +130,55 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 /***** State rules *****/
 
 .class.is-active {
+}
+
+/***** Bootstrap & Modifications *****/
+
+.btn {
+	text-align: center;
+	vertical-align: middle;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.form-control {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 10px;
+	font-size: 16px;
+	color: #555555;
+	background-color: #ffffff;
+	background-image: none;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-control:focus {
+	outline: 0;
+}
+
+
+.no-rad {
+	border-radius: 0;
+}
+
+.no-rad-right {
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.no-rad-left {
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
 }
