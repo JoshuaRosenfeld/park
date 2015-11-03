@@ -11,7 +11,7 @@ class IndexView(TemplateView):
 class SpotView(generic.DetailView):
 	model = Spot
 
-class SpotsView(generic.DetailView):
+class ResultsView(generic.DetailView):
 	template_name = 'spots/spots.html'
 	context_object_name = 'spot_list'
 

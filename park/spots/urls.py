@@ -6,4 +6,6 @@ urlpatterns = [
 	url(r'^$', views.IndexView.as_view(), name='index'),
 	# ex: /spots/5
 	url(r'^(?P<pk>[0-9]+)/$', views.SpotView.as_view(), name='spot'),
+	# ex: /spots/results
+	url(r'^$results', views.ResultsView.as_view(), name='results'),
 ]
