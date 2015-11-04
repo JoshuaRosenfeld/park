@@ -22,9 +22,13 @@ a:hover {
 /* major components */
 
 #header {
-	height: 60px;
-	margin-bottom: 120px;
+	height: 65px;
 	color: white;
+	margin-bottom: 25px;
+}
+
+#header-container {
+	background-color: rgb(45, 60, 96);
 }
 
 #footer-wrapper {
@@ -55,14 +59,25 @@ a:hover {
 
 /* home page */
 
-#wrapper {
-	height: 100vh;
-	min-height: 300px;
+#layout-home-welcome {
+	margin-top: 120px;
+}
+
+#layout-home-wrapper {
 	background: url('../images/background.jpg') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+}
+
+#layout-map {
+	margin-top: 25px;
+	height: 300px;
+}
+
+#layout-spots input {
+	height: 20px;
 }
 
 /***** Module rules *****/
@@ -116,6 +131,11 @@ a:hover {
 	vertical-align: middle;
 }
 
+.wrapper {
+	height: 100vh;
+	min-height: 300px;
+}
+
 /* text */
 
 .white {
@@ -136,6 +156,18 @@ a:hover {
 	background-color: rgb(172, 156, 87);
 	color: white;
 	height: 34px;
+	width: inherit;
+}
+
+#btn-update {
+	background-color: rgb(172, 156, 87);
+	color: white;
+	height: 20px;
+}
+
+#btn-update-container {
+	position: absolute;
+	bottom: 0;
 }
 
 #slogan {

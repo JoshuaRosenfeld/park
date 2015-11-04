@@ -1,5 +1,52 @@
-<ul>
-{% for instance in instance_list %}
-	<li>{{ instance.spot.name }}</a></li>
-{% endfor %}
-</ul>
+{% extends "spots/base.html" %}
+{% block content %}
+<div class="wrapper">
+	<div id="header-container">
+		{% include "spots/header.html" %}
+	</div>
+	<div class="container_15" id="layout-spots">
+		<div class="grid_15">
+			<form action="/spots/update/" method="get">
+				<div class="grid_6 alpha">
+					<p>Spots near</p>
+					<div class="grid_5 alpha">
+						<input type="text" class="form-control" id="address-input" value="hello" name="address">
+					</div>
+				</div>
+				<div class="grid_4">
+					<p>From</p>
+					<div class="grid_2 alpha">
+						<input type="text" class="form-control no-rad-right datepicker" value="hello" name="from-date">
+					</div>
+					<div class="grid_2 omega">
+						<div class="grid_1 alpha omega">
+							<input type="text" class="form-control no-rad-left timepicker" value="hello" name="from-time">
+						</div>
+					</div>
+				</div>
+				<div class="grid_4">
+					<p>To</p>
+					<div class="grid_2 alpha">
+						<input type="text" class="form-control no-rad-right datepicker" value="hello" name="to-date">
+					</div>
+					<div class="grid_2 omega">
+						<div class="grid_1 alpha omega">
+							<input type="text" class="form-control no-rad-left timepicker" value="hello" name="to-time">
+						</div>
+					</div>
+				</div>
+				<div class="grid_1 omega" id="btn-update-container">
+					<div class="btn vertical-center-parent" id="btn-update">
+						<div class="vertical-center-child" onclick="document.forms[0].submit()">Update</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="clear"></div>
+		<div class="container_15">
+			<div class="grid_13" id="layout-map"></div>
+		</div>
+	</div>
+</div>
+{% include "spots/footer.html" %}
+{% endblock %}
