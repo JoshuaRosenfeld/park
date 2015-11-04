@@ -8,5 +8,4 @@ urlpatterns = [
 	url(r'^(?P<pk>[0-9]+)/$', views.SpotView.as_view(), name='spot'),
 	# ex: /spots/results
 	url(r'^results/$', views.results, name='results')
-	# (?P<address>[\w]+)/(?P<date>[\w]+)/(?P<time>[\w]+)/$'
 ]

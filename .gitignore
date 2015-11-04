@@ -2,4 +2,5 @@
 *.pyc
 venv
 settings_secret.py
+keys_secret.py
 /info

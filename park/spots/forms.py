@@ -4,5 +4,5 @@ import datetime
 
 class SearchForm(forms.Form):
 	address = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control no-rad-right', 'placeholder': 'Where are you going',}))
-	date = forms.DateField(initial=datetime.date.today, widget=forms.DateInput(attrs={'class': 'form-control no-rad', 'placeholder': 'What day?',}))
-	time = forms.TimeField(widget=forms.TimeInput(attrs={'class': 'form-control no-rad', 'placeholder': 'What time?',}))
+	date = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control no-rad', 'id': 'datepicker', 'placeholder': 'What day?',}))
+	time = forms.TimeField(widget=forms.TimeInput(attrs={'class': 'form-control no-rad', 'id': 'timepicker', 'placeholder': 'What time?',}))

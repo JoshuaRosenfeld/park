@@ -9,15 +9,21 @@
 	<meta name="keywords" content="parking, park">
 	<title>Park</title>
 	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Poiret+One|Hind:300,700,400'>
-	<link rel="stylesheet" type="text/css" href="{% static 'spots/normalize.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'spots/grid.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'spots/bootstrap_mod.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'spots/style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'spots/css/normalize.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'spots/css/grid.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'spots/css/bootstrap_mod.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'spots/css/jquery-ui.min.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'spots/css/jquery.timepicker.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'spots/css/style.css' %}"/>
 </head>
 <body>
 	<div id="content">
 		{% block content %}{% endblock %}
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+	<script src="{% static 'spots/js/jquery-ui.min.js' %}"></script>
+	<script src="{% static 'spots/js/jquery.timepicker.min.js' %}"></script>
+	<script src="{% static 'spots/js/main.js' %}"></script>
 </body>
 </html>
 		

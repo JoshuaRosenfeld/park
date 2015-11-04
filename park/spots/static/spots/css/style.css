@@ -28,7 +28,7 @@ a:hover {
 }
 
 #footer-wrapper {
-	background: url('images/binding_light.png');
+	background: url('../images/binding_light.png');
 	padding: 15px 0;
 	border-top: 2px solid black;
 }
@@ -58,7 +58,7 @@ a:hover {
 #wrapper {
 	height: 100vh;
 	min-height: 300px;
-	background: url('images/background.jpg') no-repeat center center;
+	background: url('../images/background.jpg') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -146,4 +146,9 @@ a:hover {
 /***** State rules *****/
 
 .class.is-active {
+}
+
+.ui-state-active {
+	border-color: rgb(45, 60, 96);
+	background: rgb(45, 60, 96);
 }
