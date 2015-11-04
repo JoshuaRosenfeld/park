@@ -7,9 +7,8 @@ function initAutocomplete() {
 	// Create the places search box and link it to the UI element.
 	var input = document.getElementById('address-input');
 	var searchBox = new google.maps.places.SearchBox(input);
-
-	var map = new google.maps.Map($('#layout-map'), {
-		center: {lat: -34.397, lng: 150.644},
-		zoom: 8
+	var map = new google.maps.Map(document.getElementById('layout-map'), {
+		center: {lat: 41.31, lng: -72.93},
+		zoom: 14
 	});
 }

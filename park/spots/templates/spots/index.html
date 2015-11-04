@@ -8,19 +8,19 @@
 		</div>
 		<div class="grid_11 push_2" id="layout-home-search">
 			<form action="/spots/results/" method="get">
-				<div class="grid_6 alpha">
+				<div class="grid_6g alpha omega">
 					{{ form.address.errors }}
 					{{ form.address }}
 				</div>
-				<div class="grid_2">
+				<div class="grid_2g alpha omega">
 					{{ form.date.errors }}
 					{{ form.date }}
 				</div>
-				<div class="grid_2">
+				<div class="grid_2 alpha omega">
 					{{ form.time.errors }}
 					{{ form.time }}
 				</div>
-				<div class="grid_1 omega">
+				<div class="grid_1g alpha omega">
 					<div class="btn vertical-center-parent no-rad-left" id="btn-search">
 						<div class="vertical-center-child" onclick="document.forms[0].submit()">Search</div>
 					</div>
@@ -28,7 +28,6 @@
 			</form>
 		</div>
 	</div>
-	<div id="map"></div>
 </div>
 {% include "spots/footer.html" %}
 {% endblock %}

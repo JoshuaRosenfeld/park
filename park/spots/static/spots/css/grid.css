@@ -1,10 +1,10 @@
 .container_15 {
 	WIDTH: 1200px; MARGIN-LEFT: auto; MARGIN-RIGHT: auto
 }
-.grid_1 {
+.grid_1, .grid_1g {
 	POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
 }
-.grid_2 {
+.grid_2, .grid_2g {
 	POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
 }
 .grid_3 {
@@ -16,7 +16,7 @@
 .grid_5 {
 	POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
 }
-.grid_6 {
+.grid_6, .grid_6g{
 	POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
 }
 .grid_7 {
@@ -55,8 +55,14 @@
 .container_15 .grid_1 {
 	WIDTH: 60px
 }
+.container_15 .grid_1g {
+	WIDTH: 80px
+}
 .container_15 .grid_2 {
 	WIDTH: 140px
+}
+.container_15 .grid_2g {		/* element expands across gutter */
+	WIDTH: 160px
 }
 .container_15 .grid_3 {
 	WIDTH: 220px
@@ -69,6 +75,9 @@
 }
 .container_15 .grid_6 {
 	WIDTH: 460px
+}
+.container_15 .grid_6g {		/* element expands across gutter */
+	WIDTH: 480px
 }
 .container_15 .grid_7 {
 	WIDTH: 540px

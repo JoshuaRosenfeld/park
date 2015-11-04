@@ -4,6 +4,12 @@ body {
 	font-family: 'Hind', sans-serif;;
 }
 
+input, .btn { 						/* prevent form elements from being too wide */
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+}
+
 h1, h2, h3, h4, h5, h6, p, ul, ol {
 	margin: 0;
 }
@@ -63,6 +69,10 @@ a:hover {
 	margin-top: 120px;
 }
 
+#layout-home-welcome input {
+	height: 50px;
+}
+
 #layout-home-wrapper {
 	background: url('../images/background.jpg') no-repeat center center;
 	-webkit-background-size: cover;
@@ -73,11 +83,11 @@ a:hover {
 
 #layout-map {
 	margin-top: 25px;
-	height: 300px;
+	height: 400px;
 }
 
 #layout-spots input {
-	height: 20px;
+	height: 35px;
 }
 
 /***** Module rules *****/
@@ -106,10 +116,12 @@ a:hover {
 }
 
 .no-rad {
+	border-right: 0;
 	border-radius: 0;
 }
 
 .no-rad-right {
+	border-right: 0;
 	border-bottom-right-radius: 0;
 	border-top-right-radius: 0;
 }
@@ -155,14 +167,14 @@ a:hover {
 #btn-search {
 	background-color: rgb(172, 156, 87);
 	color: white;
-	height: 34px;
-	width: inherit;
+	height: 50px;
 }
 
 #btn-update {
 	background-color: rgb(172, 156, 87);
 	color: white;
-	height: 20px;
+	height: 35px;
+	font-size: 12px;
 }
 
 #btn-update-container {
