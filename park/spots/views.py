@@ -4,6 +4,7 @@ from django.views import generic
 from django.views.generic import TemplateView
 from .models import User, Spot, Instance
 from .forms import SearchForm
+from .keys_secret import MAP_KEY
 
 def index(request):
 	form = SearchForm()
