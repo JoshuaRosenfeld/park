@@ -1,9 +1,12 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.views import generic
-from django.http import QueryDict
+from django.core import serializers
+from django.utils.safestring import mark_safe
 from . import helper 
 from .models import User, Spot, Instance
 from .forms import SearchForm, SearchFormExtended
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 def index(request):
 	form = SearchForm()
@@ -31,9 +34,12 @@ def renderSpots(request):
 	address = request.GET['address']
 	from_date = request.GET['from_date']
 	from_time = request.GET['from_time']
-	instance_list = helper.getInstances(address, from_date, from_time)
+
+	instances = helper.getInstances(address, from_date, from_time)
+	instance_list = json.dumps(list(instances), cls=DjangoJSONEncoder)
+
 	return render(request, 'spots/spots.html', {
-		'instance_list': instance_list,
+		'instance_list': mark_safe(instance_list),
 		'form': form,
 		'script_url': maps_url})
 
