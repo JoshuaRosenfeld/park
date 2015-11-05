@@ -6,32 +6,32 @@
 	</div>
 	<div class="container_15" id="layout-spots">
 		<div class="grid_15">
-			<form action="/spots/update/" method="get">
+			<form action="/spots/results/" method="get">
 				<div class="grid_6 alpha">
 					<p>Address</p>
 					<div class="grid_5 alpha">
-						<input type="text" class="form-control" id="address-input" value="{{ address }}" name="address">
+						{{ form.address }}
 					</div>
 				</div>
 				<div class="grid_4">
 					<p>From</p>
 					<div class="grid_2 alpha omega">
-						<input type="text" class="form-control no-rad-right datepicker" value="{{ from_date }}" name="from-date">
+						{{ form.from_date }}
 					</div>
 					<div class="grid_2g alpha omega">
 						<div class="grid_1g alpha omega">
-							<input type="text" class="form-control no-rad-left timepicker" value="{{ from_time }}" name="from-time">
+							{{ form.from_time }}
 						</div>
 					</div>
 				</div>
 				<div class="grid_4">
 					<p>To</p>
 					<div class="grid_2 alpha omega">
-						<input type="text" class="form-control no-rad-right datepicker" value="" name="to-date">
+						{{ form.to_date }}
 					</div>
 					<div class="grid_2g alpha omega">
 						<div class="grid_1g alpha omega">
-							<input type="text" class="form-control no-rad-left timepicker" value="" name="to-time">
+							{{ form.to_time }}
 						</div>
 					</div>
 				</div>
@@ -42,9 +42,46 @@
 				</div>
 			</form>
 		</div>
+		{% if form.errors %}
+		<div class="grid_15">
+			<div class="grid_6 alpha display">
+				{% for error in form.address.errors %}
+				<p class="error">{{ error | escape }}</p>
+				{% endfor %}
+			</div>
+			<div class="grid_4">
+				<div class="grid_2 alpha omega display">
+					{% for error in form.from_date.errors %}
+					<p class="error">{{ error | escape }}</p>
+					{% endfor %}
+				</div>
+				<div class="grid_2g alpha omega">
+					<div class="grid_1g alpha omega display">
+						{% for error in form.from_time.errors %}
+						<p class="error">{{ error | escape }}</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<div class="grid_4">
+				<div class="grid_2 alpha omega display">
+					{% for error in form.to_date.errors %}
+					<p class="error">{{ error | escape }}</p>
+					{% endfor %}
+				</div>
+				<div class="grid_2g alpha omega">
+					<div class="grid_1g alpha omega display">
+						{% for error in form.to_time.errors %}
+						<p class="error">{{ error | escape }}</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
 		<div class="clear"></div>
 		<div class="container_15">
-			<div class="grid_15" id="layout-map"></div>
+			<div class="grid_15" id="layout-spots-map"></div>
 		</div>
 	</div>
 </div>

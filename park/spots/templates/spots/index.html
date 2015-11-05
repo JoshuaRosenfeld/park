@@ -12,10 +12,10 @@
 					{{ form.address }}
 				</div>
 				<div class="grid_2g alpha omega">
-					{{ form.date }}
+					{{ form.from_date }}
 				</div>
 				<div class="grid_2 alpha omega">
-					{{ form.time }}
+					{{ form.from_time }}
 				</div>
 				<div class="grid_1g alpha omega">
 					<div class="btn vertical-center-parent no-rad-left" id="btn-search">
@@ -25,20 +25,20 @@
 			</form>
 		</div>
 		{% if form.errors %}
-		<div class="grid_10 push_2" id="layout-form-errors">
-			<div class="grid_6g alpha omega">
+		<div class="grid_10 push_2">
+			<div class="grid_6g alpha omega display">
 				{% for error in form.address.errors %}
 				<p class="error white">{{ error | escape }}</p>
 				{% endfor %}
 			</div>
-			<div class="grid_2g alpha omega">
+			<div class="grid_2g alpha omega display">
 				<p></p>
-				{% for error in form.date.errors %}
+				{% for error in form.from_date.errors %}
 				<p class="error white">{{ error | escape }}</p>
 				{% endfor %}
 			</div>
-			<div class="grid_2 alpha omega">
-				{% for error in form.time.errors %}
+			<div class="grid_2 alpha omega display">
+				{% for error in form.from_time.errors %}
 				<p class="error white">{{ error | escape }}</p>
 				{% endfor %}
 			</div>
