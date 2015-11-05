@@ -10,34 +10,34 @@
 				<div class="grid_6 alpha">
 					<p>Address</p>
 					<div class="grid_5 alpha">
-						<input type="text" class="form-control" id="address-input" value="hello" name="address">
+						<input type="text" class="form-control" id="address-input" value="{{ address }}" name="address">
 					</div>
 				</div>
 				<div class="grid_4">
 					<p>From</p>
 					<div class="grid_2 alpha omega">
-						<input type="text" class="form-control no-rad-right datepicker" value="hello" name="from-date">
+						<input type="text" class="form-control no-rad-right datepicker" value="{{ from_date }}" name="from-date">
 					</div>
 					<div class="grid_2g alpha omega">
 						<div class="grid_1g alpha omega">
-							<input type="text" class="form-control no-rad-left timepicker" value="hello" name="from-time">
+							<input type="text" class="form-control no-rad-left timepicker" value="{{ from_time }}" name="from-time">
 						</div>
 					</div>
 				</div>
 				<div class="grid_4">
 					<p>To</p>
 					<div class="grid_2 alpha omega">
-						<input type="text" class="form-control no-rad-right datepicker" value="hello" name="to-date">
+						<input type="text" class="form-control no-rad-right datepicker" value="" name="to-date">
 					</div>
 					<div class="grid_2g alpha omega">
 						<div class="grid_1g alpha omega">
-							<input type="text" class="form-control no-rad-left timepicker" value="hello" name="to-time">
+							<input type="text" class="form-control no-rad-left timepicker" value="" name="to-time">
 						</div>
 					</div>
 				</div>
 				<div class="grid_1 omega" id="btn-update-container">
 					<div class="btn vertical-center-parent" id="btn-update">
-						<div class="vertical-center-child" onclick="document.forms[0].submit()">Search</div>
+						<div class="vertical-center-child" onclick="document.forms[0].submit()">Go</div>
 					</div>
 				</div>
 			</form>

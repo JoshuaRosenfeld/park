@@ -9,15 +9,12 @@
 		<div class="grid_11 push_2" id="layout-home-search">
 			<form action="/spots/results/" method="get">
 				<div class="grid_6g alpha omega">
-					{{ form.address.errors }}
 					{{ form.address }}
 				</div>
 				<div class="grid_2g alpha omega">
-					{{ form.date.errors }}
 					{{ form.date }}
 				</div>
 				<div class="grid_2 alpha omega">
-					{{ form.time.errors }}
 					{{ form.time }}
 				</div>
 				<div class="grid_1g alpha omega">
@@ -27,6 +24,26 @@
 				</div>
 			</form>
 		</div>
+		{% if form.errors %}
+		<div class="grid_10 push_2" id="layout-form-errors">
+			<div class="grid_6g alpha omega">
+				{% for error in form.address.errors %}
+				<p class="error white">{{ error | escape }}</p>
+				{% endfor %}
+			</div>
+			<div class="grid_2g alpha omega">
+				<p></p>
+				{% for error in form.date.errors %}
+				<p class="error white">{{ error | escape }}</p>
+				{% endfor %}
+			</div>
+			<div class="grid_2 alpha omega">
+				{% for error in form.time.errors %}
+				<p class="error white">{{ error | escape }}</p>
+				{% endfor %}
+			</div>
+		</div>
+		{% endif %}
 	</div>
 </div>
 {% include "spots/footer.html" %}

@@ -8,6 +8,7 @@ urlpatterns = [
 	url(r'^(?P<pk>[0-9]+)/$', views.SpotView.as_view(), name='spot'),
 	# /spots/results
 	url(r'^results/$', views.results, name='results'),
+	#url(r'^results/$', views.InstanceList.as_view(), name='results'),
 	# /spots/update
 	url(r'^update/$', views.update, name='update'),
 ]

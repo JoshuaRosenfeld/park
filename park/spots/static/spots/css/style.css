@@ -81,10 +81,16 @@ a:hover {
 	background-size: cover;
 }
 
+#layout-form-errors > div {		/* force empty divs to have width */
+	min-height: 1px;
+}
+
 #layout-map {
 	margin-top: 25px;
 	height: 400px;
 }
+
+/* spots page */
 
 #layout-spots input {
 	height: 35px;
@@ -150,6 +156,10 @@ a:hover {
 
 /* text */
 
+.error {
+	margin-left: 5px;
+}
+
 .white {
 	color: white;
 }
@@ -174,7 +184,6 @@ a:hover {
 	background-color: rgb(172, 156, 87);
 	color: white;
 	height: 35px;
-	font-size: 12px;
 }
 
 #btn-update-container {

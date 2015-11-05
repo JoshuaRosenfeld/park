@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$(".datepicker").datepicker();
-	$(".timepicker").timepicker({ 'scrollDefault': 'now', 'step': 15 });
+	$(".timepicker").timepicker({ 'scrollDefault': 'now', 'step': 15, 'timeFormat': 'h:i A'});
 });
 
 function initAutocomplete() {
