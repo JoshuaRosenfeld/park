@@ -179,6 +179,7 @@ input, .btn { 						/* prevent form elements from being too wide */
 .wrapper {
 	height: 100vh;
 	min-height: 300px;
+	min-width: 1200px;
 }
 
 /* text */

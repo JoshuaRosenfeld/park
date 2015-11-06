@@ -4,7 +4,7 @@ $(document).ready(function() {
 	initAutocomplete();
 });
 
-var map, address, input, searchBox;
+var map, origin, input, searchBox;
 
 function initAutocomplete() {
 	// Create the places search box and link it to the UI element.
@@ -28,8 +28,8 @@ function initMap() {
 	});
 
 	var geocoder = new google.maps.Geocoder();
-	address = document.getElementById('address-input').value;
-	geocoder.geocode( { 'address': address}, function(results, status) {
+	origin = document.getElementById('address-input').value;
+	geocoder.geocode( { 'address': origin}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			map.setCenter(results[0].geometry.location);
 			var marker = new google.maps.Marker({
@@ -54,7 +54,7 @@ function addMarkers() {
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				var latlng = results[0].geometry.location;
-				var overlay = new CustomMarker(latlng, map, {'rate': rate});
+				var overlay = new CustomMarker(latlng, map, {'rate': rate, 'origin': origin});
 			} else {
 				addresslert("Geocode was not successful for the following reason: " + status);
 			}
