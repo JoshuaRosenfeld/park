@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	$(".datepicker").datepicker();
 	$(".timepicker").timepicker({ 'scrollDefault': 'now', 'step': 15, 'timeFormat': 'h:i A'});
+	initAutocomplete();
 });
 
 var map, address, input, searchBox;
@@ -45,20 +46,18 @@ function initMap() {
 
 function addMarkers() {
 	var geocoder = new google.maps.Geocoder();
-	
-	for (i in instance_list) {
-		var instance = instance_list[i];
+
+	instance_list.forEach(function(instance) {
 		var address = instance.spot__residence__address;
+		var rate = instance.rate;
 
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
-				var marker = new google.maps.Marker({
-					map: map,
-					position: results[0].geometry.location
-				});
+				var latlng = results[0].geometry.location;
+				var overlay = new CustomMarker(latlng, map, {'rate': rate});
 			} else {
 				addresslert("Geocode was not successful for the following reason: " + status);
-			}	
+			}
 		});
-	}
+	});
 }
