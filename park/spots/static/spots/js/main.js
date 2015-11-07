@@ -1,16 +1,30 @@
+var map, origin, input, searchBox, param_dict;
+var ZOOM = 14;
+
 $(document).ready(function() {
-	$(".datepicker").datepicker();
-	$(".timepicker").timepicker({ 'scrollDefault': 'now', 'step': 15, 'timeFormat': 'h:i A'});
+	$('.datepicker').datepicker();
+	$('.timepicker').timepicker({ 'scrollDefault': 'now', 'step': 15, 'timeFormat': 'h:i A'});
+	
+	param_dict = makeParamDict();
+	origin = $('#address-input').val();
 	initAutocomplete();
 });
 
-var map, origin, input, searchBox;
-var ZOOM = 14;
+function makeParamDict() {
+	return {
+		'from_date': $('#from-date').val(),
+		'from_time': $('#from-time').val(),
+		'to_date': $('#to-date').val(),
+		'to_time': $('#to-time').val()
+	}
+};
 
 function initAutocomplete() {
 	// Create the places search box and link it to the UI element.
-	input = document.getElementById('address-input');
-	searchBox = new google.maps.places.SearchBox(input);
+	if($('#address-input').length) {
+		input = $('#address-input')[0];
+		searchBox = new google.maps.places.SearchBox(input);
+	}
 	
 	// Create the map
 	if($('#layout-spots-map').length) {
@@ -19,7 +33,7 @@ function initAutocomplete() {
 }
 
 function initMap() {
-	map = new google.maps.Map(document.getElementById('layout-spots-map'), {
+	map = new google.maps.Map($('#layout-spots-map')[0], {
 		center: {lat: 0, lng: 0},
 		zoom: ZOOM
 	});
@@ -31,7 +45,6 @@ function initMap() {
 
 	// place a marker at the destination
 	var geocoder = new google.maps.Geocoder();
-	origin = document.getElementById('address-input').value;
 	geocoder.geocode( { 'address': origin}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			map.setCenter(results[0].geometry.location);
@@ -59,7 +72,7 @@ function addMarkers() {
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				var latlng = results[0].geometry.location;
-				var overlay = new CustomMarker(latlng, map, {'id': id, 'rate': rate, 'origin': origin});
+				var overlay = new CustomMarker(latlng, map, {'id': id, 'rate': rate});
 			} else {
 				alert("Geocode was not successful for the following reason: " + status);
 			}

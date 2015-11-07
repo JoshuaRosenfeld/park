@@ -94,6 +94,11 @@ input, .btn { 						/* prevent form elements from being too wide */
 
 /***** Module rules *****/
 
+.btn {
+	background-color: rgb(172, 156, 87);
+	color: white;
+}
+
 .display {
 	min-height: 1px;
 }
@@ -215,14 +220,10 @@ input, .btn { 						/* prevent form elements from being too wide */
 /* items */
 
 #btn-search {
-	background-color: rgb(172, 156, 87);
-	color: white;
 	height: 50px;
 }
 
 #btn-update {
-	background-color: rgb(172, 156, 87);
-	color: white;
 	height: 35px;
 }
 

@@ -1,10 +1,10 @@
+var infowindow;			// keep track of last opened infowindow
+
 function CustomMarker(latlng, map, args) {
 	this.latlng = latlng;	
 	this.args = args;	
 	this.setMap(map);	
 };
-
-var infowindow;			// keep track of last opened infowindow
 
 CustomMarker.prototype = new google.maps.OverlayView();
 
@@ -15,7 +15,7 @@ CustomMarker.prototype.draw = function() {
 	if (!div) {
 		var rate = getRate(this.args);
 		div = this.div = createOverlayDiv(rate);
-		createInfoWindow(self, div, this.args['origin'], this.latlng, rate, this.args['id']);
+		createInfoWindow(self, div, origin, this.latlng, rate, this.args['id']);
 		var panes = this.getPanes();
 		panes.overlayImage.appendChild(div);
 	}
@@ -84,7 +84,9 @@ function createInfoWindowContent(id, rate, distance) {
 	var rate_p = $('<p>', {text: rate + " / hr"});
 	var distance_p = $('<p>', {text: distance + " away"});
 
-	var reserve_link = $('<a>', {href: "/book/" + id});
+	var params = $.param(param_dict);
+	var href = "/spots/book/" + id + "?" + params
+	var reserve_link = $('<a>', {href: href});
 	var reserve = $('<p>', {class: 'yellow strong top-space', text: 'reserve'});;
 	reserve_link.append(reserve);
 

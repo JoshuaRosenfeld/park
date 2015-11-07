@@ -43,5 +43,5 @@ def renderSpots(request):
 		'form': form,
 		'script_url': maps_url})
 
-class SpotView(generic.DetailView):
-	model = Spot
+class InstanceView(generic.DetailView):
+	model = Instance
