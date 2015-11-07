@@ -164,6 +164,10 @@ input, .btn { 						/* prevent form elements from being too wide */
 	border-top-left-radius: 0;
 }
 
+.top-space {
+	margin-top: 10px;
+}
+
 .vertical-center-parent {
 	width: 100%;
 	height: 100%;
@@ -200,6 +204,14 @@ input, .btn { 						/* prevent form elements from being too wide */
 	font-size: 12px;
 }
 
+.yellow {
+	color: rgb(172, 156, 87);
+}
+
+.strong {
+	font-weight: 700;
+}
+
 /* items */
 
 #btn-search {
@@ -219,15 +231,16 @@ input, .btn { 						/* prevent form elements from being too wide */
 	bottom: 0;
 }
 
+.iw {
+	font-size: 16px;
+}
+
 #slogan {
 	font-size: 40px;
 	line-height: 1.2;
 }
 
 /***** State rules *****/
-
-.class.is-active {
-}
 
 .ui-state-active {
 	border-color: rgb(45, 60, 96);
