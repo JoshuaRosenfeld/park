@@ -90,19 +90,23 @@ function createInfoWindow(customMarker, div, origin, dict) {
 function createInfoWindowContent(distance, dict) {
 	var wrapper = $('<div>');
 	var container = $('<div>', {class: 'iw'});
+	var info_h = $('<h4>', {text: 'Info'});
 	var rate_p = $('<p>', {text: dict['rate'] + " / hr"});
 	var distance_p = $('<p>', {text: distance + " away"});
-	var start_p = $('<p>', {text: 'from ' + dict['start']});
-	var stop_p = $('<p>', {text: 'until ' + dict['end']});
+	var times_h = $('<h4>', {class: 'top-space', text: 'Availability'});
+	var start_p = $('<p>', {text: 'From ' + dict['start']});
+	var stop_p = $('<p>', {text: 'Until ' + dict['end']});
 
 	var params = $.param(param_dict);
 	var href = "/spots/book/" + dict['id'] + "?" + params
 	var reserve_link = $('<a>', {href: href});
-	var reserve = $('<p>', {class: 'yellow strong top-space', text: 'reserve'});;
+	var reserve = $('<p>', {class: 'yellow strong top-space', text: 'Reserve'});;
 	reserve_link.append(reserve);
 
+	container.append(info_h);
 	container.append(rate_p);
 	container.append(distance_p);
+	container.append(times_h);
 	container.append(start_p);
 	container.append(stop_p);
 	container.append(reserve_link);
