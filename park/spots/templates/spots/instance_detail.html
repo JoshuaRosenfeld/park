@@ -25,79 +25,55 @@
 				</div>
 				<div class="grid_6 omega">
 					<p>{{ instance.spot.residence.address }}</p>
-				</div>			
+				</div>
 			</div>
-			<div class="clear"></div>
-			<div class="grid_8 top-space alpha">
+			<div class="grid_8 alpha top-space">
 				<h1>Reservation</h1>
-				<form action="/spots/book/submit/" method="get">
-					<div class="grid_4 alpha">
-						<p>From</p>
-						<div class="grid_2 alpha omega">
-							{{ form.from_date }}
-						</div>
-						<div class="grid_2g alpha omega">
-							<div class="grid_1g alpha omega">
-								{{ form.from_time }}
-							</div>
-						</div>
+				<div class="grid_2 alpha">
+					<p>Start time:</p>
+				</div>
+				<div class="grid_6 omega">
+					<p>{{ from_date }} @ {{ from_time }}</p>
+				</div>	
+				<div class="grid_2 alpha">
+					<p>End time:</p>
+				</div>
+				<div class="grid_6 omega">
+					<p>{{ to_date }} @ {{ to_time }}</p>
+				</div>
+				<div class="grid_2 alpha small-top-space">
+					<p>Price:</p>
+				</div>
+				<div class="grid_3 small-top-space">
+					<div class="grid_2 alpha">
+						<p>${{ instance.rate }} x {{ num_hours }} hours</p>
 					</div>
-					<div class="grid_4 omega">
-						<p>To</p>
-						<div class="grid_2 alpha omega">
-							{{ form.to_date }}
-						</div>
-						<div class="grid_2g alpha omega">
-							<div class="grid_1g alpha omega">
-								{{ form.to_time }}
-							</div>
-						</div>
+					<div class="grid_1 omega right">
+						<p>${{ spot_cost }}</p>
 					</div>
+					<div class="grid_2 alpha">
+						<p>Service fee</p>
+					</div>
+					<div class="grid_1 omega right">
+						<p>${{ service_fee }}</p>
+					</div>
+					<div class="grid_2 alpha border-top">
+						<p>Total</p>
+					</div>
+					<div class="grid_1 border-top omega right">
+						<p>${{ total }}</p>
+					</div>
+				</div>
+				<div class="clear"></div>	
+			</div>
+			<div class="grid_8 alpha top-space ">
+				<h1>Payment</h1>
+				<form action="/spots/" method="post">{% csrf_token %}
+					<p>Payment form 1</p>
+					<p>Payment form 2</p>
+					<div class="grid_1g alpha btn top-space" onclick="document.forms[0].submit()">Submit</div>
 				</form>
 			</div>
-			<div class="clear"></div>
-			{% if form.errors %}
-			<div class="grid_8 alpha">
-				<div class="grid_4 alpha">
-					<div class="grid_2 alpha omega display">
-						{% for error in form.from_date.errors %}
-						<p class="error">{{ error | escape }}</p>
-						{% endfor %}
-					</div>
-					<div class="grid_2g alpha omega">
-						<div class="grid_1g alpha omega display">
-							{% for error in form.from_time.errors %}
-							<p class="error">{{ error | escape }}</p>
-							{% endfor %}
-						</div>
-					</div>
-				</div>
-				<div class="grid_4 omega">
-					<div class="grid_2 alpha omega display">
-						{% for error in form.to_date.errors %}
-						<p class="error">{{ error | escape }}</p>
-						{% endfor %}
-					</div>
-					<div class="grid_2g alpha omega">
-						<div class="grid_1g alpha omega display">
-							{% for error in form.to_time.errors %}
-							<p class="error">{{ error | escape }}</p>
-							{% endfor %}
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="clear"></div>
-			{% endif %}
-			<div class="grid_8 top-space alpha">
-				<h1>Payment</h1>
-				<p>Payment form 1</p>
-				<p>Payment form 2</p>
-				<div class="grid_1g alpha btn top-space" onclick="document.forms[0].submit()">Submit</div>
-			</div>
-		</div>
-		<div class="grid_6 omega layout-instance-receipt">
-			<p>hello</p>
 		</div>
 	</div>
 </div>

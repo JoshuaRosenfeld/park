@@ -2,8 +2,13 @@ var map, origin, input, searchBox, param_dict;
 var ZOOM = 14;
 
 $(document).ready(function() {
-	$('.datepicker').datepicker();
+	$('.datepicker').datepicker({minDate: 0});
 	$('.timepicker').timepicker({ 'scrollDefault': 'now', 'step': 15, 'timeFormat': 'h:i A'});
+
+	$('#from-date').change(function() {
+		from_date_str = $('#from-date').val();
+		$('#to-date').datepicker('option', 'minDate', new Date(from_date_str));
+	});
 	
 	param_dict = makeParamDict();
 	origin = $('#address-input').val();

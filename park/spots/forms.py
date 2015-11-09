@@ -3,19 +3,15 @@ from django.forms.extras.widgets import SelectDateWidget
 
 errors = {'required': 'Required',}
 
-class TimeForm(forms.Form):
-	from_date = forms.DateField(input_formats=['%m/%d/%Y',], error_messages=errors, widget=forms.DateInput(attrs={'class': 'form-control no-rad-right datepicker', 'id': 'from-date', 'placeholder': 'Start date',}),)
-	from_time = forms.TimeField(input_formats=['%I:%M %p',], error_messages=errors, widget=forms.TimeInput(attrs={'class': 'form-control no-rad-left timepicker', 'id': 'from-time', 'placeholder': 'Start time',}),)
-	to_date = forms.DateField(input_formats=['%m/%d/%Y',], error_messages=errors, widget=forms.DateInput(attrs={'class': 'form-control no-rad-right datepicker', 'id': 'to-date', 'placeholder': 'End date',}),)
-	to_time = forms.TimeField(input_formats=['%I:%M %p',], error_messages=errors, widget=forms.TimeInput(attrs={'class': 'form-control no-rad-left timepicker', 'id': 'to-time', 'placeholder': 'End time',}),)
-
-	def __init__(self,*args,**kwargs):
-		should_require = kwargs.pop('should_require')
-		super(TimeForm,self).__init__(*args,**kwargs)
-		self.fields['to_date'].required = self.fields['to_time'].required = should_require
+class BookForm(forms.Form):
+	address = forms.CharField(error_messages=errors, widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'address-input', 'placeholder': 'Adddress',}),)
+	from_date = forms.DateField(input_formats=['%m/%d/%Y',], error_messages=errors, widget=forms.DateInput(attrs={'class': 'form-control datepicker', 'id': 'from-date', 'placeholder': 'Arrival',}),)
+	from_time = forms.TimeField(input_formats=['%I:%M %p',], error_messages=errors, widget=forms.TimeInput(attrs={'class': 'form-control timepicker', 'id': 'from-time', 'placeholder': 'Time',}),)
+	to_date = forms.DateField(input_formats=['%m/%d/%Y',], error_messages=errors, widget=forms.DateInput(attrs={'class': 'form-control datepicker', 'id': 'to-date', 'placeholder': 'Departure',}),)
+	to_time = forms.TimeField(input_formats=['%I:%M %p',], error_messages=errors, widget=forms.TimeInput(attrs={'class': 'form-control timepicker', 'id': 'to-time', 'placeholder': 'Time',}),)
 
 	def clean(self):
-		cleaned_data = super(TimeForm, self).clean()
+		cleaned_data = super(BookForm, self).clean()
 		from_date = cleaned_data.get("from_date")
 		from_time = cleaned_data.get("from_time")
 		to_date = cleaned_data.get("to_date")
@@ -33,16 +29,19 @@ class TimeForm(forms.Form):
 
 		return self.cleaned_data
 
-class SearchForm(forms.Form):
-	address = forms.CharField(error_messages=errors, widget=forms.TextInput(attrs={'class': 'form-control no-rad-right', 'id': 'address-input', 'placeholder': 'Where are you going?',}),)
-	from_date = forms.DateField(input_formats=['%m/%d/%Y',], error_messages=errors, widget=forms.DateInput(attrs={'class': 'form-control no-rad datepicker', 'placeholder': 'What day?',}),)
-	from_time = forms.TimeField(input_formats=['%I:%M %p',], error_messages=errors, widget=forms.TimeInput(attrs={'class': 'form-control no-rad timepicker', 'placeholder': 'What time?',}),)
-
-class SearchFormExtended(TimeForm):
-	address = forms.CharField(error_messages=errors, widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'address-input', 'placeholder': 'Adddress',}),)
-	
 	def __init__(self, *args, **kwargs):
-		should_require = kwargs.pop('should_require')
-		super(TimeForm, self).__init__(*args, **kwargs)
-		self.fields['to_date'].required = self.fields['to_time'].required = should_require
+		should_glue = kwargs.pop('should_glue')
+		super(BookForm, self).__init__(*args, **kwargs)
+
+		if should_glue:	
+			self.fields['address'].widget.attrs['class'] += ' no-rad-right'
+			self.fields['from_date'].widget.attrs['class'] += ' no-rad'
+			self.fields['from_time'].widget.attrs['class'] += ' no-rad'
+			self.fields['to_date'].widget.attrs['class'] += ' no-rad'
+			self.fields['to_time'].widget.attrs['class'] += ' no-rad'
+		else:
+			self.fields['from_date'].widget.attrs['class'] += ' no-rad-right'
+			self.fields['from_time'].widget.attrs['class'] += ' no-rad-left'
+			self.fields['to_date'].widget.attrs['class'] += ' no-rad-right'
+			self.fields['to_time'].widget.attrs['class'] += ' no-rad-left'
 	

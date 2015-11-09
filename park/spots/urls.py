@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
 	# ex: /spots/
 	url(r'^$', views.index, name='index'),
+	# /spots/s/
+	url(r'^s/$', views.indexSearch, name='index-search'),
 	# /spots/results/
 	url(r'^results/$', views.results, name='results'),
 	# ex: /spots/book/5/

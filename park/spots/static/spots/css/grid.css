@@ -13,7 +13,7 @@
 .grid_4 {
 	POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
 }
-.grid_5 {
+.grid_5, .grid_5g {
 	POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
 }
 .grid_6, .grid_6g{
@@ -72,6 +72,9 @@
 }
 .container_15 .grid_5 {
 	WIDTH: 380px
+}
+.container_15 .grid_5g {
+	WIDTH: 400px;
 }
 .container_15 .grid_6 {
 	WIDTH: 460px

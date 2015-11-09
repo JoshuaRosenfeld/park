@@ -1,5 +1,4 @@
 /***** Base rules *****/
-
 body {
 	font-family: 'Hind', sans-serif;;
 }
@@ -41,6 +40,7 @@ input, .btn { 						/* prevent form elements from being too wide */
 	background: url('../images/binding_light.png');
 	padding: 15px 0;
 	border-top: 2px solid black;
+	margin-top: 25px;
 }
 
 #footer-wrapper a {
@@ -92,6 +92,10 @@ input, .btn { 						/* prevent form elements from being too wide */
 }
 
 /***** Module rules *****/
+
+.border-top {
+	border-top: 1px solid black;
+}
 
 .btn {
 	background-color: rgb(172, 156, 87);
@@ -168,6 +172,10 @@ input, .btn { 						/* prevent form elements from being too wide */
 	border-top-left-radius: 0;
 }
 
+.small-top-space {
+	margin-top: 10px;
+}
+
 .top-space {
 	margin-top: 25px;
 }
@@ -214,6 +222,10 @@ input, .btn { 						/* prevent form elements from being too wide */
 
 .strong {
 	font-weight: 700;
+}
+
+.right {
+	text-align: right;
 }
 
 /* items */
