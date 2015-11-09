@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 from . import helper 
 from .models import User, Spot, Instance
 from .forms import SearchForm, SearchFormExtended
-import json
+import json, time, pytz
 from django.core.serializers.json import DjangoJSONEncoder
 
 def index(request):
@@ -35,7 +35,20 @@ def renderSpots(request):
 	from_date = request.GET['from_date']
 	from_time = request.GET['from_time']
 
-	instances = helper.getInstances(address, from_date, from_time)
+	# get time zone of destination
+	time_zone = helper.getTimeZone(address, from_date)
+
+	# get instance list
+	instances = helper.getInstances(address, from_date, from_time, time_zone)
+
+	# format start and stop using destination's time zone
+	tz = pytz.timezone(time_zone)
+	for i in instances:
+		loc_start = i['start'].astimezone(tz)
+		loc_end = i['end'].astimezone(tz)
+		i['start'] = loc_start.strftime('%I:%M %p on %m/%d')
+		i['end'] = loc_end.strftime('%I:%M %p on %m/%d')
+
 	instance_list = json.dumps(list(instances), cls=DjangoJSONEncoder)
 
 	return render(request, 'spots/spots.html', {

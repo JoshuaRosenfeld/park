@@ -15,7 +15,16 @@ CustomMarker.prototype.draw = function() {
 	if (!div) {
 		var rate = getRate(this.args);
 		div = this.div = createOverlayDiv(rate);
-		createInfoWindow(self, div, origin, this.latlng, rate, this.args['id']);
+
+		dict = {
+			'latlng': this.latlng,
+			'rate': rate,
+			'id': this.args['id'],
+			'start': this.args['start'],
+			'end': this.args['end']
+		};
+
+		createInfoWindow(self, div, origin, dict);
 		var panes = this.getPanes();
 		panes.overlayImage.appendChild(div);
 	}
@@ -50,13 +59,13 @@ function createOverlayDiv(rate) {
 	return div;
 };
 
-function createInfoWindow(customMarker, div, origin, latlng, rate, id) {
+function createInfoWindow(customMarker, div, origin, dict) {
 	var distance;
 	var service = new google.maps.DistanceMatrixService;
 
 	service.getDistanceMatrix({
 		origins: [origin],
-		destinations: [latlng],
+		destinations: [dict['latlng']],
 		travelMode: google.maps.TravelMode.WALKING,
 	}, function(response, status) {
 		if (status !== google.maps.DistanceMatrixStatus.OK) {
@@ -65,7 +74,7 @@ function createInfoWindow(customMarker, div, origin, latlng, rate, id) {
 			var results = response.rows[0].elements;
 			distance = results[0].duration.text;
 
-			var html = createInfoWindowContent(id, rate, distance);
+			var html = createInfoWindowContent(distance, dict);
 			var iw = new google.maps.InfoWindow({content: html, pixelOffset: new google.maps.Size(5,0)});
 			
 			google.maps.event.addDomListener(div, "click", function(event) {
@@ -78,20 +87,24 @@ function createInfoWindow(customMarker, div, origin, latlng, rate, id) {
 	});
 };
 
-function createInfoWindowContent(id, rate, distance) {
+function createInfoWindowContent(distance, dict) {
 	var wrapper = $('<div>');
 	var container = $('<div>', {class: 'iw'});
-	var rate_p = $('<p>', {text: rate + " / hr"});
+	var rate_p = $('<p>', {text: dict['rate'] + " / hr"});
 	var distance_p = $('<p>', {text: distance + " away"});
+	var start_p = $('<p>', {text: 'from ' + dict['start']});
+	var stop_p = $('<p>', {text: 'until ' + dict['end']});
 
 	var params = $.param(param_dict);
-	var href = "/spots/book/" + id + "?" + params
+	var href = "/spots/book/" + dict['id'] + "?" + params
 	var reserve_link = $('<a>', {href: href});
 	var reserve = $('<p>', {class: 'yellow strong top-space', text: 'reserve'});;
 	reserve_link.append(reserve);
 
 	container.append(rate_p);
 	container.append(distance_p);
+	container.append(start_p);
+	container.append(stop_p);
 	container.append(reserve_link);
 	wrapper.append(container);
 	var content = wrapper.html();

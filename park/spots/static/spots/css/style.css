@@ -88,8 +88,11 @@ input, .btn { 						/* prevent form elements from being too wide */
 }
 
 #layout-spots-map {
-	margin-top: 25px;
 	height: 400px;
+}
+
+#layout-spots-note {
+	margin-top: 25px;
 }
 
 /***** Module rules *****/

@@ -68,11 +68,13 @@ function addMarkers() {
 		var address = instance.spot__residence__address;
 		var rate = instance.rate;
 		var id = instance.id;
+		var start = instance.start;
+		var end = instance.end;
 
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				var latlng = results[0].geometry.location;
-				var overlay = new CustomMarker(latlng, map, {'id': id, 'rate': rate});
+				var overlay = new CustomMarker(latlng, map, {'id': id, 'rate': rate, 'start': start, 'end': end});
 			} else {
 				alert("Geocode was not successful for the following reason: " + status);
 			}
