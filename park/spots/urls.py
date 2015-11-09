@@ -7,5 +7,5 @@ urlpatterns = [
 	# /spots/results/
 	url(r'^results/$', views.results, name='results'),
 	# ex: /spots/book/5/
-	url(r'^book/(?P<pk>[0-9]+)', views.InstanceView.as_view(), name='instance'),
+	url(r'^book/(?P<instance_id>[0-9]+)', views.instance, name='instance'),
 ]

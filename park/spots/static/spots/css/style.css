@@ -91,10 +91,6 @@ input, .btn { 						/* prevent form elements from being too wide */
 	height: 400px;
 }
 
-#layout-spots-note {
-	margin-top: 25px;
-}
-
 /***** Module rules *****/
 
 .btn {
@@ -173,7 +169,7 @@ input, .btn { 						/* prevent form elements from being too wide */
 }
 
 .top-space {
-	margin-top: 10px;
+	margin-top: 25px;
 }
 
 .vertical-center-parent {
