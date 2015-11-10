@@ -19,13 +19,13 @@ class BookForm(forms.Form):
 
 		if to_date and from_date:
 			if to_date < from_date:
-				msg = 'Must follow start date'
-				self._errors['to_date'] = self.error_class([msg])
+				msg = 'Error: end date must follow start date'
+				self.add_error(None, msg)
 			elif to_date == from_date:
 				if to_time and from_time:
 					if to_time < from_time:
-						msg = 'Must follow start time'
-						self._errors['to_time'] = self.error_class([msg])
+						msg = 'Error: end time must follow start time'
+						self.add_error(None, msg)
 
 		return self.cleaned_data
 

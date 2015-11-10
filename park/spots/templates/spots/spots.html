@@ -1,5 +1,6 @@
 {% extends "spots/base.html" %}
 {% block content %}
+{% load staticfiles %}
 <div class="wrapper">
 	<div id="header-container">
 		{% include "spots/header.html" %}
@@ -13,31 +14,22 @@
 						{{ form.address }}
 					</div>
 				</div>
-				<div class="grid_4">
+				<div class="grid_5">
 					<p>From</p>
 					<div class="grid_2 alpha omega">
 						{{ form.from_date }}
 					</div>
 					<div class="grid_2g alpha omega">
-						<div class="grid_1g alpha omega">
-							{{ form.from_time }}
-						</div>
+						{{ form.from_time }}
 					</div>
 				</div>
-				<div class="grid_4">
+				<div class="grid_4 omega">
 					<p>To</p>
 					<div class="grid_2 alpha omega">
 						{{ form.to_date }}
 					</div>
 					<div class="grid_2g alpha omega">
-						<div class="grid_1g alpha omega">
-							{{ form.to_time }}
-						</div>
-					</div>
-				</div>
-				<div class="grid_1 omega" id="btn-update-container">
-					<div class="btn vertical-center-parent" id="btn-update">
-						<div class="vertical-center-child" onclick="document.forms[0].submit()">Go</div>
+						{{ form.to_time }}
 					</div>
 				</div>
 			</form>
@@ -77,6 +69,11 @@
 					</div>
 				</div>
 			</div>
+			{% for error in form.non_field_errors %}
+				<div class="grid_15 alpha omega display">
+					<p>{{ error | escape }}</p>
+				</div>
+			{% endfor %}
 		</div>
 		{% endif %}
 		<div class="grid_15">
@@ -89,4 +86,5 @@
 <script type="text/javascript">
 	instance_list = {{ instance_list }};
 </script>
+<script src="{% static 'spots/js/spots.js' %}"></script>
 {% endblock %}

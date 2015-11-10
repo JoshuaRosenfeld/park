@@ -15,12 +15,12 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'spots/css/jquery-ui.min.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'spots/css/jquery.timepicker.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'spots/css/style.css' %}"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
 </head>
 <body>
 	<div id="content">
 		{% block content %}{% endblock %}
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
 	<script src="{% static 'spots/js/jquery-ui.min.js' %}"></script>
 	<script src="{% static 'spots/js/jquery.timepicker.min.js' %}"></script>
 	<script src="http://maps.google.com/maps/api/js?libraries=places&sensor=false"></script>

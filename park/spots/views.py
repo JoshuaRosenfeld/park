@@ -82,3 +82,6 @@ def instance(request, instance_id):
 		'service_fee': service_fee,
 		'total': total,
 		},)
+
+def success(request):
+	return render(request, 'spots/success.html')

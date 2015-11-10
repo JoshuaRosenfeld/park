@@ -38,7 +38,6 @@
 				{% endfor %}
 			</div>
 			<div class="grid_2g alpha omega display">
-				<p></p>
 				{% for error in form.from_date.errors %}
 				<p class="error white">{{ error | escape }}</p>
 				{% endfor %}
@@ -49,7 +48,6 @@
 				{% endfor %}
 			</div>
 			<div class="grid_2g alpha omega display">
-				<p></p>
 				{% for error in form.to_date.errors %}
 				<p class="error white">{{ error | escape }}</p>
 				{% endfor %}
@@ -59,6 +57,11 @@
 				<p class="error white">{{ error | escape }}</p>
 				{% endfor %}
 			</div>
+			{% for error in form.non_field_errors %}
+				<div class="grid_11 alpha omega display">
+					<p class="white">{{ error | escape }}</p>
+				</div>
+			{% endfor %}
 		</div>
 		{% endif %}
 	</div>
