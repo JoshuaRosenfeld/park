@@ -11,5 +11,7 @@ urlpatterns = [
 	# ex: /spots/book/5/
 	url(r'^book/(?P<instance_id>[0-9]+)', views.instance, name='instance'),
 	# /success/
-	url(r'^success/', views.success, name='success'),
+	url(r'^success/$', views.success, name='success'),
+	# /register/
+	url(r'^register/$', views.register, name='register'),
 ]

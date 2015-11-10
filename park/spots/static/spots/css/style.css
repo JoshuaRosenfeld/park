@@ -1,6 +1,6 @@
 /***** Base rules *****/
 body {
-	font-family: 'Hind', sans-serif;;
+	font-family: 'Hind', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol {
@@ -26,6 +26,10 @@ input, .btn { 						/* prevent form elements from being too wide */
 
 /* major components */
 
+#content {
+	min-height: 300px;
+}
+
 #header {
 	height: 65px;
 	color: white;
@@ -37,10 +41,14 @@ input, .btn { 						/* prevent form elements from being too wide */
 }
 
 #footer-wrapper {
+	width: 100%;
+	margin-top: 25px;
+}
+
+#footer {
 	background: url('../images/binding_light.png');
 	padding: 15px 0;
 	border-top: 2px solid black;
-	margin-top: 25px;
 }
 
 #footer-wrapper a {
@@ -83,7 +91,7 @@ input, .btn { 						/* prevent form elements from being too wide */
 
 /* spots page */
 
-#layout-spots input {
+#layout-spots input, #layout-instance input {
 	height: 35px;
 }
 
@@ -193,8 +201,7 @@ input, .btn { 						/* prevent form elements from being too wide */
 }
 
 .wrapper {
-	height: 100vh;
-	min-height: 300px;
+	min-height: 100vh;
 	min-width: 1200px;
 }
 

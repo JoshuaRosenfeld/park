@@ -1,10 +1,11 @@
 {% extends "spots/base.html" %}
+{% block title %}Reserve a spot{% endblock %}
 {% block content %}
 <div class="wrapper">
 	<div id="header-container">
 		{% include "spots/header.html" %}
 	</div>
-	<div class="container_15" id="layout-spots">
+	<div class="container_15" id="layout-instance">
 		<div class="grid_9">
 			<div class="grid_8 alpha">
 				<h1>Spot</h1>
@@ -75,7 +76,10 @@
 				</form>
 			</div>
 		</div>
+		<div class="clearfix"></div>
 	</div>
 </div>
-{% include "spots/footer.html" %}
+<div>
+	{% include "spots/footer.html" %}
+</div>
 {% endblock %}

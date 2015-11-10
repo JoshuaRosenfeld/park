@@ -1,31 +1,33 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.views import generic
-from django.core import serializers
 from django.utils.safestring import mark_safe
 from . import helper 
-from .models import User, Spot, Instance
 from .forms import BookForm
+from .models import Instance
 import json, time, pytz, decimal
 from django.core.serializers.json import DjangoJSONEncoder
+from django.contrib.auth import authenticate, logout, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+
 
 SERVICE_RATE = decimal.Decimal(0.1)
 
 def index(request):
 	form = BookForm(should_glue=True)
-	maps_url = helper.getMapsUrl()
-	return render(request, 'spots/index.html', {'form': form, 'script_url': maps_url})
+	has_user = request.user.is_authenticated()
+	return render(request, 'spots/index.html', {'form': form, 'has_user': has_user,})
 
 def indexSearch(request):
 	form = BookForm(request.GET, should_glue=True)
-	maps_url = helper.getMapsUrl()
 	if form.is_valid():
 		return results(request)
 	else:
-		return render(request, 'spots/index.html', {'form': form, 'script_url': maps_url})
+		has_user = request.user.is_authenticated()
+		return render(request, 'spots/index.html', {'form': form,  'has_user': has_user,})
 
 def results(request):
 	form = BookForm(request.GET, should_glue=False)
-	maps_url = helper.getMapsUrl()
+	has_user = request.user.is_authenticated()
 
 	if form.is_valid():
 		address = request.GET['address']
@@ -55,9 +57,9 @@ def results(request):
 	return render(request, 'spots/spots.html', {
 		'instance_list': mark_safe(instance_list),
 		'form': form,
-		'script_url': maps_url,},)
+		'has_user': has_user,},)
 
-
+@login_required
 def instance(request, instance_id):
 	instance = Instance.objects.filter(id=instance_id)[0]
 	from_date = request.GET['from_date']
@@ -70,7 +72,7 @@ def instance(request, instance_id):
 	service_fee = round((SERVICE_RATE * spot_cost), 2)
 	total = round((spot_cost + service_fee), 2)
 
-
+	has_user = request.user.is_authenticated()
 	return render(request, 'spots/instance_detail.html', {
 		'instance': instance,
 		'from_date': from_date,
@@ -81,7 +83,22 @@ def instance(request, instance_id):
 		'spot_cost': spot_cost,
 		'service_fee': service_fee,
 		'total': total,
+	 	'has_user': has_user,
 		},)
 
 def success(request):
 	return render(request, 'spots/success.html')
+
+def register(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			new_user = form.save()
+			new_user = authenticate(username=request.POST['username'], password=request.POST['password1'])
+			login(request, new_user)
+			return HttpResponseRedirect(request.GET['next'])
+		else:
+			return render(request, 'registration/register.html', {'form': form,})
+	else:
+		form = UserCreationForm()
+		return render(request, 'registration/register.html', {'form': form,})

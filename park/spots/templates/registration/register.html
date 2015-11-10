@@ -1,0 +1,55 @@
+{% extends "spots/base.html" %}
+{% block title %}Create an account{% endblock %}
+{% block content %}
+<div class="wrapper">
+    <div id="header-container">
+        {% include "spots/header.html" %}
+    </div>
+    <div class="container_15">
+    	<div class="grid_15">
+    		<h1>Create an account</h1>
+			<form action="" method="post">
+				{% csrf_token %}
+				{% if form.errors %}
+				{% for error in form.errors %}
+                <div class="grid_6 alpha">
+                    <p>Error: {{ error | escape }}</p>
+                </div>
+                <div class="clear"></div>
+                {% endfor %}
+                {% endif %}
+				<div class="grid_3 alpha">
+	                <p>{{ form.username.label_tag }}</p>
+	                <div class="grid_3 alpha">
+	                    {{ form.username }}
+	                </div>
+	            </div>
+            	<div class="clear"></div>
+            	<div class="grid_3 alpha">
+	                <p>{{ form.password1.label_tag }}</p>
+	                <div class="grid_3 alpha">
+	                    {{ form.password1 }}
+	                </div>
+	            </div>
+            	<div class="clear"></div>
+            	<div class="grid_3 alpha">
+	                <p>{{ form.password2.label_tag }}</p>
+	                <div class="grid_3 alpha">
+	                    {{ form.password2 }}
+	                </div>
+	            </div>
+            	<div class="clear"></div>
+				<div class="grid_1 top-space alpha">
+	                <div class="btn vertical-center-parent">
+	                    <div class="vertical-center-child" onclick="document.forms[0].submit()">Register</div>
+	                </div>
+	            </div>
+			</form>	
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div id="footer-wrapper">
+	{% include "spots/footer.html" %}
+</div>
+{% endblock %}

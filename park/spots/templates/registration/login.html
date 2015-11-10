@@ -1,0 +1,48 @@
+{% extends "spots/base.html" %}
+{% block title %}Log in{% endblock %}
+{% block content %}
+<div class="wrapper">
+    <div id="header-container">
+        {% include "spots/header.html" %}
+    </div>
+    <div class="container_15">
+        <div class="grid_15">
+            <h1>Please login</h1>
+            <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                {% csrf_token %}
+                {% if form.errors %}
+                <div class="grid_6 alpha">
+                    <p>Error: Your username and password didn't match. Please try again.</p>
+                </div>
+                <div class="clear"></div>
+                {% endif %}
+                <div class="grid_3 alpha">
+                    <p>{{ form.username.label_tag }}</p>
+                    <div class="grid_3 alpha">
+                        {{ form.username }}
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="grid_3 alpha">
+                    <p>{{ form.password.label_tag }}</p>
+                    <div class="grid_3 alpha">
+                        {{ form.password }}
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="grid_1 top-space alpha">
+                    <div class="btn vertical-center-parent">
+                        <div class="vertical-center-child" onclick="document.forms[0].submit()">login</div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div id="footer-wrapper">
+    {% include "spots/footer.html" %}
+</div>
+{% endblock %}

@@ -1,4 +1,5 @@
 {% extends "spots/base.html" %}
+{% block title %}Welcome to Park{% endblock %}
 {% block content %}
 <div class="wrapper" id="layout-home-wrapper">
 	{% include "spots/header.html" %}  
@@ -64,6 +65,7 @@
 			{% endfor %}
 		</div>
 		{% endif %}
+		<div class="clearfix"></div>
 	</div>
 </div>
 {% include "spots/footer.html" %}
