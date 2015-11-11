@@ -72,6 +72,13 @@
 				<form action="/spots/success/" method="post">{% csrf_token %}
 					<p>Payment form 1</p>
 					<p>Payment form 2</p>
+					<input type="hidden" name="from_date" value="{{ from_date }}" />
+					<input type="hidden" name="from_time" value="{{ from_time }}" />
+					<input type="hidden" name="to_date" value="{{ to_date }}" />
+					<input type="hidden" name="to_time" value="{{ to_time }}" />
+					<input type="hidden" name="instance_id" value="{{ instance.id }}" />
+					<input type="hidden" name="user_id" value="{{ request.user.id }}" />
+					<input type="hidden" name="total" value="{{ total }}" />
 					<div class="grid_1g alpha btn top-space" onclick="document.forms[0].submit()">Submit</div>
 				</form>
 			</div>

@@ -20,6 +20,7 @@ class Instance(models.Model):
 	start = models.DateTimeField()
 	end = models.DateTimeField()
 	rate = models.DecimalField(max_digits=8, decimal_places=2)
+	booked = models.BooleanField(default=False)
 	spot = models.ForeignKey(Spot)
 
 	def __str__(self):
