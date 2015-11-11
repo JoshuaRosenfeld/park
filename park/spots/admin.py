@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import User
+from .models import Instance
 
-class UserAdmin(admin.ModelAdmin):
-	list_display = ('name', 'email')
+class InstanceAdmin(admin.ModelAdmin):
+	list_display = ('start', 'end')
 
-admin.site.register(User, UserAdmin)
+admin.site.register(Instance, InstanceAdmin)

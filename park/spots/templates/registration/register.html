@@ -10,32 +10,88 @@
     		<h1>Create an account</h1>
 			<form action="" method="post">
 				{% csrf_token %}
-				{% if form.errors %}
-				{% for error in form.errors %}
-                <div class="grid_6 alpha">
-                    <p>Error: {{ error | escape }}</p>
-                </div>
-                <div class="clear"></div>
-                {% endfor %}
-                {% endif %}
-				<div class="grid_3 alpha">
-	                <p>{{ form.username.label_tag }}</p>
-	                <div class="grid_3 alpha">
-	                    {{ form.username }}
+                <div class="grid_8 alpha">
+                	<div class="grid_2 alpha">
+	                	<p>{{ form.first_name.label_tag }}</p>
+                	</div>
+	                <div class="grid_6 omega">
+	                	<div class="grid_6 alpha omega">
+	                    	{{ form.first_name }}
+                    	</div>
+                    	{% for error in form.first_name.errors %}
+		                <div class="grid_6 alpha omega">
+		                    <p class="small">{{ error | escape }}</p>
+		                </div>
+		                <div class="clear"></div>
+		                {% endfor %}
+	                </div>
+	            </div>
+	            <div class="clear"></div>
+				<div class="grid_8 alpha small-top-space">
+                	<div class="grid_2 alpha">
+	                	<p>{{ form.username.label_tag }}</p>
+                	</div>
+	                <div class="grid_6 omega">
+	                	<div class="grid_6 alpha omega">
+	                    	{{ form.username }}
+                    	</div>
+                    	{% for error in form.username.errors %}
+		                <div class="grid_6 alpha omega">
+		                    <p class="small">{{ error | escape }}</p>
+		                </div>
+		                <div class="clear"></div>
+               			 {% endfor %}
+	                </div>
+	            </div>
+	            <div class="clear"></div>
+                <div class="grid_8 alpha small-top-space">
+                	<div class="grid_2 alpha">
+	                	<p>{{ form.email.label_tag }}</p>
+                	</div>
+	                <div class="grid_6 omega">
+	                	<div class="grid_6 alpha omega">
+	                    	{{ form.email }}
+                    	</div>
+                    	{% for error in form.email.errors %}
+		                <div class="grid_6 alpha">
+		                    <p class="small">{{ error | escape }}</p>
+		                </div>
+		                <div class="clear"></div>
+		                {% endfor %}
 	                </div>
 	            </div>
             	<div class="clear"></div>
-            	<div class="grid_3 alpha">
-	                <p>{{ form.password1.label_tag }}</p>
-	                <div class="grid_3 alpha">
-	                    {{ form.password1 }}
+                <div class="grid_8 alpha small-top-space">
+                	<div class="grid_2 alpha">
+            			<p>{{ form.password1.label_tag }}</p>
+        			</div>
+	                <div class="grid_6 omega">
+	                	<div class="grid_6 alpha omega">
+	                    	{{ form.password1 }}
+                    	</div>
+                    	{% for error in form.password1.errors %}
+		                <div class="grid_6 alpha">
+		                    <p class="small">{{ error | escape }}</p>
+		                </div>
+		                <div class="clear"></div>
+		                {% endfor %}
 	                </div>
 	            </div>
             	<div class="clear"></div>
-            	<div class="grid_3 alpha">
-	                <p>{{ form.password2.label_tag }}</p>
-	                <div class="grid_3 alpha">
-	                    {{ form.password2 }}
+                <div class="grid_8 alpha small-top-space">
+                	<div class="grid_2 alpha">
+	                	<p>{{ form.password2.label_tag }}</p>
+                	</div>
+	                <div class="grid_6 omega">
+                		<div class="grid_6 alpha omega">
+	                    	{{ form.password2 }}
+                    	</div>
+                    	{% for error in form.password2.errors %}
+		                <div class="grid_6 alpha">
+		                    <p class="small">{{ error | escape }}</p>
+		                </div>
+		                <div class="clear"></div>
+		                {% endfor %}
 	                </div>
 	            </div>
             	<div class="clear"></div>

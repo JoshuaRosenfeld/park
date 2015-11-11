@@ -1,20 +1,12 @@
 from django.db import models
-
-class User(models.Model):
-	name = models.CharField(max_length=70)
-	nickname = models.CharField(max_length=70)
-	email = models.CharField(max_length=255)
-	password = models.CharField(max_length=255)
-
-	def __str__(self):
-		return self.name
+from django.contrib.auth.models import User
 
 class Residence(models.Model):
 	address = models.CharField(max_length=500)
 	user = models.ForeignKey(User)
 
 	def __str__(self):
-		return "%s lives at %s" % (self.user.name, self.address)
+		return "%s lives at %s" % (self.user.username, self.address)
 
 class Spot(models.Model):
 	name = models.CharField(max_length=20)
@@ -43,4 +35,4 @@ class Transaction(models.Model):
 	instance = models.ForeignKey(Instance)
 
 	def __str__(self):
-		return "%s paid %d for spot %d" % (self.guest.name, self.cost, self.instance.spot.id)
+		return "%s paid %d for spot %d" % (self.guest.username, self.cost, self.instance.spot.id)

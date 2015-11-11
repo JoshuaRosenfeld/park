@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.utils.safestring import mark_safe
 from . import helper 
-from .forms import BookForm
+from .forms import BookForm, MyUserCreationForm
 from .models import Instance
 import json, time, pytz, decimal, urllib
 from django.core.serializers.json import DjangoJSONEncoder
@@ -94,7 +94,7 @@ def success(request):
 
 def register(request):
 	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
+		form = MyUserCreationForm(request.POST)
 		if form.is_valid():
 			new_user = form.save()
 			new_user = authenticate(username=request.POST['username'], password=request.POST['password1'])
@@ -104,5 +104,5 @@ def register(request):
 		else:
 			return render(request, 'registration/register.html', {'form': form,})
 	else:
-		form = UserCreationForm()
+		form = MyUserCreationForm()
 		return render(request, 'registration/register.html', {'form': form,})
