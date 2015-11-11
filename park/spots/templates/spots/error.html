@@ -1,0 +1,17 @@
+{% extends "spots/base.html" %}
+{% block title %}Error{% endblock %}
+{% block content %}
+<div class="wrapper">
+	<div id="header-container">
+		{% include "spots/header.html" %}
+	</div>
+	<div class="container_15">
+		<h1>Sorry!</h1>
+		<p>Something went wrong. Please try again.</p>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div id="footer-wrapper">
+	{% include "spots/footer.html" %}
+</div>
+{% endblock %}

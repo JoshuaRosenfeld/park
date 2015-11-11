@@ -36,7 +36,6 @@ def getTimeZone(address, date):
 def getLatLng(address):
 	payload = {'address': address, 'key': MAPS_KEY}
 	r = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=payload)
-	print(r.url)
 	results = r.json()['results'][0]['geometry']['location']
 	lat = results['lat']
 	lng = results['lng']

@@ -17,7 +17,7 @@
 				</div>
 			</a>
 			{% else %}
-			<a href="/spots/register/?next={% firstof request.path '/' %}">
+			<a href="/spots/register/?next={% firstof request.get_full_path|urlencode '/'%}">
 				<div class="vertical-center-parent">
 					<div class="vertical-center-child">Sign up</div>
 				</div>
@@ -26,13 +26,13 @@
 		</div>
 		<div class="grid_1 omega">
 			{% if has_user %}
-			<a href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path '/' %}">
+			<a href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.get_full_path|urlencode '/'%}">
 				<div class="vertical-center-parent">
 					<div class="vertical-center-child">Log out</div>
 				</div>
 			</a>
 			{% else %}
-			<a href="{% url 'django.contrib.auth.views.login' %}?next={% firstof request.path '/' %}">
+			<a href="{% url 'django.contrib.auth.views.login' %}?next={% firstof request.get_full_path|urlencode '/'%}">
 				<div class="vertical-center-parent">
 					<div class="vertical-center-child">Log in</div>
 				</div>

@@ -3,7 +3,7 @@ from django.utils.safestring import mark_safe
 from . import helper 
 from .forms import BookForm
 from .models import Instance
-import json, time, pytz, decimal
+import json, time, pytz, decimal, urllib
 from django.core.serializers.json import DjangoJSONEncoder
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
@@ -30,11 +30,11 @@ def results(request):
 	has_user = request.user.is_authenticated()
 
 	if form.is_valid():
-		address = request.GET['address']
-		from_date = request.GET['from_date']
-		from_time = request.GET['from_time']
-		to_date = request.GET['to_date']
-		to_time = request.GET['to_time']
+		address = request.GET.get('address', None)
+		from_date = request.GET.get('from_date', None)
+		from_time = request.GET.get('from_time', None)
+		to_date = request.GET.get('to_date', None)
+		to_time = request.GET.get('to_time', None)
 
 		# get time zone of destination
 		time_zone = helper.getTimeZone(address, from_date)
@@ -62,10 +62,13 @@ def results(request):
 @login_required
 def instance(request, instance_id):
 	instance = Instance.objects.filter(id=instance_id)[0]
-	from_date = request.GET['from_date']
-	from_time = request.GET['from_time']
-	to_date = request.GET['to_date']
-	to_time = request.GET['to_time']
+	from_date = request.GET.get('from_date', None)
+	from_time = request.GET.get('from_time', None)
+	to_date = request.GET.get('to_date', None)
+	to_time = request.GET.get('to_time', None)
+
+	if not from_date or not from_time or not to_date or not to_time:
+		return render(request, 'spots/error.html')
 
 	num_hours = decimal.Decimal(helper.getDiff(from_date, from_time, to_date, to_time))
 	spot_cost = round((instance.rate * num_hours), 2)
@@ -96,7 +99,8 @@ def register(request):
 			new_user = form.save()
 			new_user = authenticate(username=request.POST['username'], password=request.POST['password1'])
 			login(request, new_user)
-			return HttpResponseRedirect(request.GET['next'])
+			url_with_get = urllib.parse.unquote(request.GET['next'])
+			return HttpResponseRedirect(url_with_get)
 		else:
 			return render(request, 'registration/register.html', {'form': form,})
 	else:
