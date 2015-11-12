@@ -70,19 +70,14 @@ function addMarkers() {
 
 	// add an overlay for each spot
 	instance_list.forEach(function(instance) {
-		var address = instance.spot__residence__address;
+		var lat = instance.spot__residence__lat;
+		var lng = instance.spot__residence__lng;
 		var rate = instance.rate;
 		var id = instance.id;
 		var start = instance.start;
 		var end = instance.end;
 
-		geocoder.geocode( { 'address': address}, function(results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-				var latlng = results[0].geometry.location;
-				var overlay = new CustomMarker(latlng, map, {'id': id, 'rate': rate, 'start': start, 'end': end});
-			} else {
-				alert("Geocode was not successful for the following reason: " + status);
-			}
-		});
+		var latlng = new google.maps.LatLng(lat, lng);
+		var overlay = new CustomMarker(latlng, map, {'id': id, 'rate': rate, 'start': start, 'end': end});
 	});
 }

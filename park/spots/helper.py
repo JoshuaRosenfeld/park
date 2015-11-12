@@ -6,7 +6,7 @@ def getInstances(address, from_date, from_time, to_date, to_time, from_time_zone
 	utc_from = getUtcFromDateTime(from_date, from_time, from_time_zone)
 	utc_to = getUtcFromDateTime(to_date, to_time, to_time_zone)
 
-	instance_list = Instance.objects.filter(start__lte=utc_from, end__gte=utc_to, booked=False).values('id', 'start', 'end', 'rate', 'spot__residence__address')
+	instance_list = Instance.objects.filter(start__lte=utc_from, end__gte=utc_to, booked=False).values('id', 'start', 'end', 'rate', 'spot__residence__address', 'spot__residence__lat', 'spot__residence__lng')
 	return instance_list
 
 def getMapsUrl():
@@ -14,7 +14,8 @@ def getMapsUrl():
 
 def getTimeZone(address, date, time):
 	obj = makeDateTime(date, time)
-	latlng = getLatLng(address)
+	lat, lng = getLatLng(address)
+	latlng = "%s, %s" % (lat, lng)
 	time = getTimeStamp(obj)
 	payload = {'location': latlng, 'key': MAPS_KEY, 'timestamp': time}
 	r = requests.get('https://maps.googleapis.com/maps/api/timezone/json', params=payload)
@@ -26,7 +27,7 @@ def getLatLng(address):
 	results = r.json()['results'][0]['geometry']['location']
 	lat = results['lat']
 	lng = results['lng']
-	return "%s, %s" % (lat, lng)
+	return (lat, lng)
 
 def getTimeStamp(obj):
 	time_tuple = obj.timetuple()

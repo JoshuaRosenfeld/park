@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from . import populate
 
 
 SERVICE_RATE = decimal.Decimal(0.1)
@@ -67,7 +68,7 @@ def results(request):
 def instance(request, instance_id):
 	instances = Instance.objects.filter(id=instance_id)
 	if not instances:
-		return render(request, 'spots/error.html')
+		return HttpResponseRedirect('/spots/error/')
 	else:
 		instance = instances[0]
 
@@ -77,7 +78,7 @@ def instance(request, instance_id):
 	to_time = request.GET.get('to_time', None)
 
 	if not from_date or not from_time or not to_date or not to_time:
-		return render(request, 'spots/error.html')
+		return HttpResponseRedirect('/spots/error/')
 
 	num_hours = decimal.Decimal(helper.getDiff(from_date, from_time, to_date, to_time))
 	spot_cost = round((instance.rate * num_hours), 2)
@@ -109,13 +110,15 @@ def success(request):
 	total = request.POST.get('total', None)
 
 	if not instance_id or not user_id or not from_date or not from_time or not to_date or not to_time or not total:
-		return render(request, 'spots/error.html')
+		return HttpResponseRedirect('/spots/error/')
 
 	instances = Instance.objects.filter(id=instance_id)
 	if not instances:
-		return render(request, 'spots/error.html')
-	else:
-		instance = instances[0]
+		return HttpResponseRedirect('/spots/error/')
+	
+	instance = instances[0]
+	if instance.booked == True:
+		return HttpResponseRedirect('/spots/error/')
 
 	address = instance.spot.residence.address
 	from_time_zone = helper.getTimeZone(address, from_date, from_time)
@@ -162,3 +165,7 @@ def register(request):
 	else:
 		form = MyUserCreationForm()
 		return render(request, 'registration/register.html', {'form': form,})
+
+def error(request):
+	return render(request, 'spots/error.html')
+

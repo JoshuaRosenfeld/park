@@ -12,6 +12,8 @@ urlpatterns = [
 	url(r'^book/(?P<instance_id>[0-9]+)', views.instance, name='instance'),
 	# /success/
 	url(r'^success/$', views.success, name='success'),
+	# /error/
+	url(r'^error/$', views.error, name='error'),
 	# /register/
 	url(r'^register/$', views.register, name='register'),
 ]

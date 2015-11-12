@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 
 class Residence(models.Model):
 	address = models.CharField(max_length=500)
+	lat = models.DecimalField (max_digits=9, decimal_places=6, default=-1)
+	lng = models.DecimalField (max_digits=9, decimal_places=6, default=-1)
 	user = models.ForeignKey(User)
 
 	def __str__(self):

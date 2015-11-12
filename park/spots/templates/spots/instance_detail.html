@@ -70,8 +70,7 @@
 			<div class="grid_8 alpha top-space ">
 				<h1>Payment</h1>
 				<form action="/spots/success/" method="post">{% csrf_token %}
-					<p>Payment form 1</p>
-					<p>Payment form 2</p>
+					<p>Credit Card ending in 1234</p>
 					<input type="hidden" name="from_date" value="{{ from_date }}" />
 					<input type="hidden" name="from_time" value="{{ from_time }}" />
 					<input type="hidden" name="to_date" value="{{ to_date }}" />
