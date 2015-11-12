@@ -9,8 +9,6 @@ from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from . import populate
-
 
 SERVICE_RATE = decimal.Decimal(0.1)
 
