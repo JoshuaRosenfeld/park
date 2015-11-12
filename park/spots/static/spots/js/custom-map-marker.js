@@ -90,7 +90,7 @@ function createInfoWindow(customMarker, div, origin, dict) {
 function createInfoWindowContent(distance, dict) {
 	var wrapper = $('<div>');
 	var container = $('<div>', {class: 'iw'});
-	var info_h = $('<h4>', {text: 'Info'});
+	var info_h = $('<h4>', {text: 'Spot Info'});
 	var rate_p = $('<p>', {text: dict['rate'] + " / hr"});
 	var distance_p = $('<p>', {text: distance + " away"});
 	var times_h = $('<h4>', {class: 'top-space', text: 'Availability'});
