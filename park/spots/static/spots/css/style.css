@@ -239,6 +239,10 @@ input, .btn { 						/* prevent form elements from being too wide */
 	text-align: right;
 }
 
+.underline {
+	text-decoration: underline;
+}
+
 /* items */
 
 #btn-search {

@@ -21,7 +21,7 @@ class MyUserCreationForm(UserCreationForm):
 errors = {'required': 'Required',}
 
 class BookForm(forms.Form):
-	address = forms.CharField(error_messages=errors, widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'address-input', 'placeholder': 'Adddress',}),)
+	address = forms.CharField(error_messages=errors, widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'address-input', 'placeholder': 'Address',}),)
 	from_date = forms.DateField(input_formats=['%m/%d/%Y',], error_messages=errors, widget=forms.DateInput(attrs={'class': 'form-control datepicker', 'id': 'from-date', 'placeholder': 'Arrival',}),)
 	from_time = forms.TimeField(input_formats=['%I:%M %p',], error_messages=errors, widget=forms.TimeInput(attrs={'class': 'form-control timepicker', 'id': 'from-time', 'placeholder': 'Time',}),)
 	to_date = forms.DateField(input_formats=['%m/%d/%Y',], error_messages=errors, widget=forms.DateInput(attrs={'class': 'form-control datepicker', 'id': 'to-date', 'placeholder': 'Departure',}),)

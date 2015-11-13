@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="clear"></div>
-                <div class="grid_1 top-space alpha">
+                <div class="grid_1 small-top-space alpha">
                     <div class="btn vertical-center-parent">
                         <div class="vertical-center-child" onclick="document.forms[0].submit()">login</div>
                     </div>
@@ -38,6 +38,9 @@
                 <div class="clear"></div>
                 <input type="hidden" name="next" value="{{ next }}" />
             </form>
+        </div>
+        <div class="grid_15 top-space">
+            <p>Don't have an account? Sign up <a href="/spots/register/?next={{ request.GET.next|urlencode }}" class="underline">here</a>.</p>
         </div>
         <div class="clearfix"></div>
     </div>

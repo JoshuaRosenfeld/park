@@ -70,6 +70,7 @@ def instance(request, instance_id):
 	else:
 		instance = instances[0]
 
+	print(request.GET)
 	from_date = request.GET.get('from_date', None)
 	from_time = request.GET.get('from_time', None)
 	to_date = request.GET.get('to_date', None)
